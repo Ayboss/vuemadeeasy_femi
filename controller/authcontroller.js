@@ -99,7 +99,14 @@ exports.signup = async (req, res) => {
     // send token to user
   } catch (err) {
     console.log(err, "error");
+    if (err?.code == 11000) {
+      return res.status(400).json({
+        status: "error",
+        error: "Username or Email already in use",
+      });
+    }
     return res.status(500).json({
+      status: "error",
       error: err,
     });
   }
