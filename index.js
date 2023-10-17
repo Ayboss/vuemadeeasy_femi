@@ -2,11 +2,14 @@ require("dotenv").config();
 
 const express = require("express");
 const mongoose = require("mongoose");
+const cors = require("cors");
 
 const authrouter = require("./router/authrouter");
 const taskrouter = require("./router/taskrouter");
 const app = express();
 app.use(express.json());
+app.use(cors());
+app.options("*", cors());
 
 app.get("/", (req, res) => {
   res.status(200).send("<h1>Is That not insult to me </h1>");
