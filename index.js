@@ -5,6 +5,7 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 
 const authrouter = require("./router/authrouter");
+const userrouter = require("./router/userrouter");
 const taskrouter = require("./router/taskrouter");
 const app = express();
 app.use(express.json());
@@ -16,6 +17,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/auth", authrouter);
+app.use("/user", userrouter);
 app.use("/task", taskrouter);
 
 mongoose
